@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="functions.live.A_testClass_create"/>
+      <methods>
+		  
+		  
+		<include name="createTestAlarmByAttributeRecursiveMontlyDateWise"  /> 
+		  
+		  
+		 
+		<exclude name="createManualAlarmByAttribute"  />
+		<exclude name="createManualAlarmByResource"  />
+		<exclude name="createManualAlarmByFireFighte"  />
+		<exclude name="createManualAlarmByEscalationResource"/>
+		<include name="extendAlarmToSecondStation"/>
+		<include name="sendMassageToAlarmUser"/>
+		
+		
+		
+		<include name="createInformationByAttribute"  />
+		<include name="createInformationByResource"  />
+		<include name="createInformationByFirefighter"  />
+		<include name="sendMassageToinfoUsers"/>"
+		
+		<include name="createInfoEventByAttribute"/>
+		<include name="createInfoEventByResource"/>
+		<include name="createInfoEventByFirefighter"/>
+		<include name="sendMassageToinfoEventUsers"/>
+		
+		
+		
+		
+		
+		
+		
+		  
+		  
+		  <exclude name="createInformationByFirefighter"  />
+	  </methods>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
