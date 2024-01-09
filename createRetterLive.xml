@@ -7,16 +7,25 @@
       <methods>
 		  
 		  
+	
+		 <include name="userDetails"  />
+		  
+		<include name="createForMonitor"  />
+		
+		 
+		<include name="createInfoEventByAttributeSchedule"  /> 
+		<include name="createInfoEventByResourceSchedule"  /> 
+		<include name="createInfoEventByFighterSchedule"  /> 
+		  
 		<include name="createTestAlarmByAttributeRecursiveMontlyDateWise"  /> 
 		  
-		  
 		 
-		<exclude name="createManualAlarmByAttribute"  />
-		<exclude name="createManualAlarmByResource"  />
-		<exclude name="createManualAlarmByFireFighte"  />
-		<exclude name="createManualAlarmByEscalationResource"/>
-		<include name="extendAlarmToSecondStation"/>
-		<include name="sendMassageToAlarmUser"/>
+		  
+		
+		 
+		<include name="createAvailabilityRequestSendImmediat"  />
+		<include name="createAvailabilityRequestSendSchedule"  />
+		
 		
 		
 		
@@ -29,8 +38,13 @@
 		<include name="createInfoEventByResource"/>
 		<include name="createInfoEventByFirefighter"/>
 		<include name="sendMassageToinfoEventUsers"/>
-		
-		
+
+		<exclude name="createManualAlarmByAttribute"  />
+		<exclude name="createManualAlarmByResource"  />
+		<exclude name="createManualAlarmByFireFighte"  />
+		<exclude name="createManualAlarmByEscalationResource"/>
+		<exclude name="extendAlarmToSecondStation"/>
+		<exclude name="sendMassageToAlarmUser"/>
 		
 		
 		
@@ -39,6 +53,10 @@
 		  
 		  
 		  <exclude name="createInformationByFirefighter"  />
+		  
+		  <include name="detailsAboutScript"  /> 
+		  
+		  
 	  </methods>
     </classes>
   </test> <!-- Test -->

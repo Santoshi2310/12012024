@@ -12,9 +12,14 @@ public class A_testClass_create extends B_baseClass {
 
 	String date ;
 	String gCurrntTime;
-	String gTimeA15min;
-	String gTimeA20min;
-
+	String gTimeA7min;
+	String gTimeA22min;
+	 String gTimeA67min;
+	 String gTimeA82min;
+	 
+	 String date2;
+     String dateAft2Days;
+     String today;
 
 	
 	String userName = "6039-IN-andrew-deptu-2";
@@ -28,6 +33,7 @@ public class A_testClass_create extends B_baseClass {
 	G_InfoEvent ep;
 	AAA_timeClasss tmc;
 	H_testAlarm ta;
+	I_availabilityRequest ar;
 	
 
 	@BeforeClass
@@ -42,19 +48,27 @@ public class A_testClass_create extends B_baseClass {
 
 		lp.logIn(userName, password, driver);
 	
-		Reporter.log("live department user-" + userName + " log in sucessfully", true);
-		Reporter.log(" ",true);
+		
+	
 		hp.langChange(driver);
 		ma = new E_manualAlarm(driver);
 		ip = new F_information(driver);
 		ep=new G_InfoEvent (driver) ;
 		tmc = new AAA_timeClasss ();
 		ta = new  H_testAlarm (driver);
+		
+		ar = new I_availabilityRequest (driver);
+		
+		
 		tmc.catchTime(driver);
 		date=tmc.germanyTodaysDate;
 		gCurrntTime =tmc.germanycurrentTime;
-		gTimeA15min =tmc.germanyTimeAfter15Minutes;
-		gTimeA20min = tmc.germanyTimeAfter20Minutes;
+		gTimeA7min =tmc.germanyTimeAfter7Minutes;
+		gTimeA22min = tmc.germanyTimeAfter22Minutes;
+		date2=tmc.germanyTomorrowDate2;
+		dateAft2Days=tmc.germanyDateAfterTwoDyas;
+		today=tmc.TodaysDay;
+		
 		
 		
 
@@ -67,14 +81,42 @@ public class A_testClass_create extends B_baseClass {
 
 	}
 	
+	
+	@Test
+
+	public void userDetails() throws Throwable {
+				
+		Reporter.log(" ",true);
+		Reporter.log("live department user # " + userName + " # log in sucessfully", true);
+		Reporter.log(" ",true);
+	}
+	
+	
+	
+	@Test
+
+	public void createForMonitor() throws Throwable {
+				
+		Reporter.log(" ",true);
+		Reporter.log("The process of creating information from "+gTimeA7min+" to "+gTimeA22min+ " for monitor is started.", true);
+		ip.infoEventCommon(driver);
+		ip.createInformationForMonitor(driver, gTimeA7min, gTimeA22min, date);
+		Reporter.log("The process of creating information for monitor is complete.", true);
+		Reporter.log(" ",true);
+	}
+	
 	@Test
 
 	public void createTestAlarmByAttributeRecursiveMontlyDateWise() throws Throwable {
 		
+		tmc.catchTime2(driver);
+		date=tmc.germanyTodaysDate;
+		gTimeA7min= tmc.germanyTimeAfter7Minutes;
+		
 		Reporter.log(" ",true);
 		Reporter.log("The process of creating a test alarm by attribute with remindar recursive > monthly > date wise is started.", true);
 		ta.testAlarmCommon(driver);
-		ta.testAlarmByRecursiveMonthlyDateWais(driver,date, gTimeA15min);
+		ta.testAlarmByRecursiveMonthlyDateWais(driver,date, gTimeA7min);
 		
 	
 		Reporter.log("The process of creating a test alarm by attribute with remindar recursive > monthly > date wise is complete.", true);
@@ -209,6 +251,61 @@ public class A_testClass_create extends B_baseClass {
 	}
 	
 	
+	@Test
+
+	public void createInfoEventByAttributeSchedule() throws Throwable {
+		
+		tmc.catchTime2(driver);
+		date=tmc.germanyTodaysDate;
+		gTimeA7min= tmc.germanyTimeAfter7Minutes;
+		gTimeA22min = tmc.germanyTimeAfter22Minutes;
+		Reporter.log(" ",true);
+		Reporter.log("The process of create info-event schedule by attribute is started.", true);
+		ip.infoEventCommon(driver);
+		ep.createEventByAttributeSchedule(driver, date, gTimeA7min, gTimeA22min);
+		Reporter.log("The process of create info-event schedule by attribute is complete.", true);
+		Reporter.log(" ",true);
+	}
+	
+	@Test
+public void createInfoEventByResourceSchedule() throws Throwable {
+		
+		tmc.catchTime2(driver);
+		date=tmc.germanyTodaysDate;
+		gTimeA67min=tmc.germanyTimeAfter67Minutes;
+		gTimeA82min=tmc.germanyTimeAfter82Minutes;
+		
+		Reporter.log(" ",true);
+		Reporter.log("The process of create info-event schedule by resource is started.", true);
+		ip.infoEventCommon(driver);
+		ep.createEventByResourceSchedule(driver, date, gTimeA67min, gTimeA82min);
+		Reporter.log("The process of create info-event schedule by attribute is complete.", true);
+		Reporter.log(" ",true);
+	}
+	
+	@Test
+	public void createInfoEventByFighterSchedule() throws Throwable {
+			
+			tmc.catchTime2(driver);
+			gTimeA7min= tmc.germanyTimeAfter7Minutes;
+			gTimeA22min = tmc.germanyTimeAfter22Minutes;
+		
+			Reporter.log(" ",true);
+			Reporter.log("The process of create info-event schedule by firefighter is started.", true);
+			ip.infoEventCommon(driver);
+			ep.createEventByFireFightrSchedule(driver, date2, gTimeA7min, gTimeA22min);
+			
+			Reporter.log("The process of create info-event schedule by firefighter is complete.", true);
+			Reporter.log(" ",true);
+		}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -266,11 +363,49 @@ public class A_testClass_create extends B_baseClass {
 		Reporter.log(" ",true);
 	}
 	
+	@Test
+	public void createAvailabilityRequestSendImmediat () throws Throwable {
+		Reporter.log(" ",true);
+		Reporter.log("The process of create availability request > send imediate is started.", true);
+		ar.availabilityRequestCommon(driver);
+		ar.ARSendImmediate(driver, date2, gTimeA7min, dateAft2Days, gTimeA22min);
+		Reporter.log("The process of create availability request > send imediate is complete.", true);
+		Reporter.log(" ",true);
+	}
+
+	@Test
+	public void createAvailabilityRequestSendSchedule () throws Throwable {
+		Reporter.log(" ",true);
+		Reporter.log("The process of create availability request > send schedule is started.", true);
+		ar.availabilityRequestCommon(driver);
+		ar.ARSendSchedule(driver, date, date2, gTimeA7min, dateAft2Days, gTimeA22min);
+		Reporter.log("The process of create availability request > send schedule is complete.", true);
+		Reporter.log(" ",true);
+	}
 	
+	
+	
+	@Test
+	public void detailsAboutScript() throws Throwable 
+	
+	{
+		Reporter.log(" ",true);
+		
+	
+		
+		Reporter.log("Login  date-"+ date+" & login  time -"+gCurrntTime, true);
+
+		tmc.catchTime2(driver);
+		date=tmc.germanyTodaysDate;
+		gCurrntTime =tmc.germanycurrentTime;
+		Reporter.log("Logout date-"+ date+" & logout time -"+gCurrntTime, true);
+		Reporter.log(" ",true);
+		
+	}
 	
 	
 
-	@AfterMethod()
+	@AfterMethod
 
 	public void backToHomePage2() throws Throwable {
 		hp.backToHomePage(driver);
@@ -279,21 +414,18 @@ public class A_testClass_create extends B_baseClass {
 
 	@AfterClass
 	public void logOut() throws Throwable {
-		lp.logOut(driver);
-		Reporter.log("Live user "+userName+" successfully login on "+ date+" at "+gCurrntTime, true);
-		tmc.catchTime2(driver);
-		date=tmc.germanyTodaysDate;
-		gCurrntTime =tmc.germanycurrentTime;
 		
-		Reporter.log("Live user "+userName+" successfully logout on "+ date+" at "+gCurrntTime, true);
+		lp.logOut(driver);
+		Reporter.log("Logout sucessfully.", true);
 		Reporter.log(" ",true);
-		Reporter.log("Hello, Daily check point checking process is complete", true);
-		Reporter.log(" ",true);
+		
+		
+	
 		driver.quit();
 		Reporter.log("Browser close sucessfully.", true);
+		Reporter.log(" ",true);
 		
 		
 
 	}
-
 }

@@ -26,13 +26,13 @@ public class C_logIn_logOut extends B_baseClass{
 		Actions act = new Actions (driver);
 		
 		userNameField.click();
-		Thread.sleep(3000);	
+		Thread.sleep(1000);	
 		act.sendKeys(userName).build().perform();
 		Thread.sleep(3000);	
 		
 		
 		passwordField.click();
-		Thread.sleep(3000);	
+		Thread.sleep(1000);	
 		act.sendKeys(password).build().perform();
 		Thread.sleep(3000);	
 		

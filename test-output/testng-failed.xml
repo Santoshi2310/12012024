@@ -5,14 +5,11 @@
     <classes>
       <class name="functions.live.AA_testClass_delete">
         <methods>
-          <include name="deleteTestAlarmFromOverview"/>
-          <include name="deleteAlarm"/>
-          <include name="delteInfoEvent"/>
-          <include name="backToHomePage2"/>
+          <include name="deleteARFromHistory"/>
           <include name="lounchBrowser"/>
-          <include name="deleteTestAlarmFromList"/>
-          <include name="logOut"/>
+          <include name="backToHomePage2"/>
           <include name="backToHomePage"/>
+          <include name="logOut"/>
         </methods>
       </class> <!-- functions.live.AA_testClass_delete -->
     </classes>

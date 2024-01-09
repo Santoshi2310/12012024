@@ -11,9 +11,13 @@ public class AA_testClass_delete extends B_baseClass {
 	
 	String date ;
 	String gCurrntTime;
-	String gTimeA15min;
-	String gTimeA20min;
-
+	String gTimeA7min;
+	String gTimeA22min;
+	 String gTimeA67min;
+	 String gTimeA82min;
+	 
+	 String date2;
+     String dateAft2Days;
 
 	
 	String userName = "6039-IN-andrew-deptu-2";
@@ -27,13 +31,14 @@ public class AA_testClass_delete extends B_baseClass {
 	G_InfoEvent ep;
 	AAA_timeClasss tmc;
 	H_testAlarm ta;
+	I_availabilityRequest ar;
 	
 
 	@BeforeClass
 	public void lounchBrowser() throws Throwable {
 		
 		browserLounch();
-		Reporter.log("Hi, The process of deleting live department records has started.", true);
+		Reporter.log("Hello, Daily check point checking process has started.", true);
 		Reporter.log(" ",true);
 
 		lp = new C_logIn_logOut(driver);
@@ -41,23 +46,31 @@ public class AA_testClass_delete extends B_baseClass {
 
 		lp.logIn(userName, password, driver);
 	
-		Reporter.log("live department user-" + userName + " log in sucessfully", true);
-		Reporter.log(" ",true);
+		
+	
 		hp.langChange(driver);
 		ma = new E_manualAlarm(driver);
 		ip = new F_information(driver);
 		ep=new G_InfoEvent (driver) ;
 		tmc = new AAA_timeClasss ();
 		ta = new  H_testAlarm (driver);
+		
+		ar = new I_availabilityRequest (driver);
+		
+		
 		tmc.catchTime(driver);
 		date=tmc.germanyTodaysDate;
 		gCurrntTime =tmc.germanycurrentTime;
-		gTimeA15min =tmc.germanyTimeAfter15Minutes;
-		gTimeA20min = tmc.germanyTimeAfter20Minutes;
+		gTimeA7min =tmc.germanyTimeAfter7Minutes;
+		gTimeA22min = tmc.germanyTimeAfter22Minutes;
+		date2=tmc.germanyTomorrowDate2;
+		dateAft2Days=tmc.germanyDateAfterTwoDyas;
+		
 		
 		
 
 	}
+
 
 	@BeforeMethod
 	public void backToHomePage() throws Throwable {
@@ -65,6 +78,14 @@ public class AA_testClass_delete extends B_baseClass {
 
 	}
 	
+	@Test
+
+	public void userDetails() throws Throwable {
+				
+		Reporter.log(" ",true);
+		Reporter.log("live department user # " + userName + " # log in sucessfully", true);
+		Reporter.log(" ",true);
+	}
 	
 	
 	
@@ -75,8 +96,6 @@ public class AA_testClass_delete extends B_baseClass {
 		Reporter.log(" ",true);
 		Reporter.log("The process of deleting a test alarm from list is started.", true);
      	ta.deleteTestAlarmFromList(driver);
-	
-		
 		Reporter.log("The process of deleting a test alarm from list is complted.", true);
 		Reporter.log(" ",true);
 		
@@ -127,7 +146,58 @@ public class AA_testClass_delete extends B_baseClass {
 		
 		Reporter.log(" ",true);
 	}
+	
+	
+	@Test
+	public void deleteARFromList() throws Throwable 
+	{
 
+		Reporter.log(" ",true);
+		Reporter.log("The process of deleting availability request from list is started.", true);
+		ar.availabilityRequestCommon(driver);
+		ar.deleteAvailabilityRequestFromList(driver);
+		
+		Reporter.log("The process of deleting availability request from list is complted.", true);
+		
+		Reporter.log(" ",true);
+	}
+	
+	
+	@Test
+	public void deleteARFromHistory() throws Throwable 
+	{
+
+		Reporter.log(" ",true);
+		Reporter.log("The process of deleting availability request from history is started.", true);
+	
+		ar.deleteAvailabilityRequestFromHistory(driver);
+		
+		Reporter.log("The process of deleting availability request from history is complted.", true);
+		
+		Reporter.log(" ",true);
+	}
+	
+	
+	
+	
+
+	@Test
+	public void detailsAboutScript() throws Throwable 
+	
+	{
+		Reporter.log(" ",true);
+		
+	
+		
+		Reporter.log("Login  date-"+ date+" & login  time -"+gCurrntTime, true);
+		tmc.catchTime2(driver);
+		date=tmc.germanyTodaysDate;
+		gCurrntTime =tmc.germanycurrentTime;
+		
+		Reporter.log("Logout date-"+ date+" & logout time -"+gCurrntTime, true);
+		Reporter.log(" ",true);
+		
+	}
 	
 	
 
@@ -142,18 +212,13 @@ public class AA_testClass_delete extends B_baseClass {
 	public void logOut() throws Throwable {
 		
 		lp.logOut(driver);
+		Reporter.log("Logout sucessfully.", true);
 		Reporter.log(" ",true);
-		Reporter.log("Live user "+userName+" successfully login on "+ date+" at "+gCurrntTime, true);
-		tmc.catchTime2(driver);
-		date=tmc.germanyTodaysDate;
-		gCurrntTime =tmc.germanycurrentTime;
-		
-		Reporter.log("Live user "+userName+" successfully logout on "+ date+" at "+gCurrntTime, true);
-		Reporter.log(" ",true);
-		Reporter.log("Hello, the process of deleting entries in liver department is complete.", true);
-		Reporter.log(" ",true);
+	
+	
 		driver.quit();
 		Reporter.log("Browser close sucessfully.", true);
+		Reporter.log(" ",true);
 		
 		
 

@@ -53,12 +53,25 @@ import org.openqa.selenium.support.ui.Select;
 	
 	
 	
+	@FindBy(xpath="//input[@id=\"startTime\"]")private WebElement eventStartTime;
+	@FindBy(xpath="//input[@id=\"endTime\"]")private WebElement evenEventTime;
+	@FindBy(xpath="//input[@id=\"reminderTimeStatus\"]")private WebElement setRemindarCheckBox;
+	@FindBy(xpath="//select[@id=\"InformationReminderType\"]")private WebElement remindarType;
+	@FindBy(xpath="//select[@id=\"InformationReminderMin\"]")private WebElement SelectReminderMin;
+	@FindBy(xpath="//select[@id=\"InformationReminderHours\"]")private WebElement SelectReminderHours;
+	@FindBy(xpath="//select[@id=\"InformationReminderDay\"]")private WebElement SelectReminderDays;
+		//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
 	//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
 	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
+		//@FindBy(xpath="")private WebElement ;
+	
 					
 					
 	public G_InfoEvent (WebDriver driver)
@@ -66,6 +79,346 @@ import org.openqa.selenium.support.ui.Select;
 	PageFactory.initElements(driver, this);
 	}
 	
+	
+
+	public void createEventByAttributeSchedule ( WebDriver driver,String date ,String gTimeA7min,String gTimeA22min ) throws Throwable
+	{
+		Actions act = new Actions (driver);
+	
+		createNewButton.click();
+		Thread.sleep(2000);
+		fireDepartmentField.click();
+		Thread.sleep(2000);
+		act.sendKeys("andrew").build().perform();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.ENTER).build().perform();
+	Thread.sleep(2000);
+	fireStationField.click();
+	Thread.sleep(2000);
+	act.sendKeys("06").build().perform();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.ENTER).build().perform();
+	Thread.sleep(2000);
+	Select se= new Select(selectType);
+	se.selectByVisibleText("Event");
+	Thread.sleep(2000);
+	eventCategoryList.click();
+	Thread.sleep(3000);
+	ADST06ECat1.click();
+	Thread.sleep(3000);
+	startDate.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
+	endDate.click();
+	Thread.sleep(2000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
+	
+	
+	eventStartTime.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(gTimeA7min).build().perform();
+	Thread.sleep(2000);
+	
+	
+	evenEventTime.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(gTimeA22min).build().perform();
+	Thread.sleep(2000);
+	
+	setRemindarCheckBox.click();
+	Thread.sleep(2000);
+	
+	act.sendKeys(Keys.PAGE_DOWN).build().perform();
+	Thread.sleep(2000);
+	
+	Select se1= new Select(remindarType);
+	se1.selectByVisibleText("One time");
+	Thread.sleep(2000);
+	
+	Select se2= new Select(SelectReminderMin);
+	se2.selectByVisibleText("1");
+	Thread.sleep(2000);	
+	
+	
+	
+	
+	
+	enabldSendPush.click();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.PAGE_DOWN).build().perform();
+	Thread.sleep(2000);
+	titleField.click();
+	Thread.sleep(2000);
+	act.sendKeys("BG-info event schedule-atrribute-reminder>1 min").build().perform();
+	Thread.sleep(2000);
+	loacationField.click();
+	Thread.sleep(2000);
+	act.sendKeys("Manewada graound, Nagpur").build().perform();
+	Thread.sleep(2000);
+	
+	act.sendKeys(Keys.TAB).build().perform();
+	Thread.sleep(2000);
+	act.sendKeys("BG-info event schedule created by attribute with reminder > 1 min checking.").build().perform();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		
+		userTypeAttribute.click();
+		Thread.sleep(2000);
+		
+		selectAllCheckBox.click();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		selectAllCheckBox.click();
+		Thread.sleep(2000);
+		ADST06A2.click();
+		Thread.sleep(2000);
+		saveInfo.click();
+		Thread.sleep(2000);
+		
+		
+		
+		
+		
+	}
+	
+	
+	public void createEventByResourceSchedule ( WebDriver driver,String date ,String gTimeA67min,String gTimeA82min ) throws Throwable
+	{
+		Actions act = new Actions (driver);
+	
+		createNewButton.click();
+		Thread.sleep(2000);
+		fireDepartmentField.click();
+		Thread.sleep(2000);
+		act.sendKeys("andrew").build().perform();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.ENTER).build().perform();
+	Thread.sleep(2000);
+	fireStationField.click();
+	Thread.sleep(2000);
+	act.sendKeys("06").build().perform();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.ENTER).build().perform();
+	Thread.sleep(2000);
+	Select se= new Select(selectType);
+	se.selectByVisibleText("Event");
+	Thread.sleep(2000);
+	eventCategoryList.click();
+	Thread.sleep(3000);
+	ADST06ECat1.click();
+	Thread.sleep(3000);
+	startDate.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
+	endDate.click();
+	Thread.sleep(2000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
+	
+	
+	eventStartTime.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(gTimeA67min).build().perform();
+	Thread.sleep(2000);
+	
+	
+	evenEventTime.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(gTimeA82min).build().perform();
+	Thread.sleep(2000);
+	
+	setRemindarCheckBox.click();
+	Thread.sleep(2000);
+	
+	act.sendKeys(Keys.PAGE_DOWN).build().perform();
+	Thread.sleep(2000);
+	
+	Select se1= new Select(remindarType);
+	se1.selectByVisibleText("One time");
+	Thread.sleep(2000);
+	
+	Select se2= new Select(SelectReminderHours);
+	se2.selectByVisibleText("1");
+	Thread.sleep(2000);	
+	
+	
+	
+	
+	
+	enabldSendPush.click();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.PAGE_DOWN).build().perform();
+	
+	Thread.sleep(2000);
+	titleField.click();
+	Thread.sleep(2000);
+	act.sendKeys("BG-info event schedule-resource-reminder>1 hours").build().perform();
+	Thread.sleep(2000);
+	loacationField.click();
+	Thread.sleep(2000);
+	act.sendKeys("Manewada graound, Nagpur").build().perform();
+	Thread.sleep(2000);
+	
+	act.sendKeys(Keys.TAB).build().perform();
+	Thread.sleep(2000);
+	act.sendKeys("BG-info event schedule - resource with reminder > 1 hours checking.").build().perform();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		
+		userTypeAttribute.click();
+		userTypeResource.click();
+		Thread.sleep(2000);
+		
+		selectAllCheckBox.click();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		selectAllCheckBox.click();
+		Thread.sleep(2000);
+		ADST06R2.click();
+		Thread.sleep(2000);
+		saveInfo.click();
+		Thread.sleep(2000);
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	public void createEventByFireFightrSchedule ( WebDriver driver,String date2 ,String gTimeA7min,String gTimeA22min ) throws Throwable
+	{
+		Actions act = new Actions (driver);
+	
+		createNewButton.click();
+		Thread.sleep(2000);
+		fireDepartmentField.click();
+		Thread.sleep(2000);
+		act.sendKeys("andrew").build().perform();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.ENTER).build().perform();
+	Thread.sleep(2000);
+	fireStationField.click();
+	Thread.sleep(2000);
+	act.sendKeys("06").build().perform();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.ENTER).build().perform();
+	Thread.sleep(2000);
+	Select se= new Select(selectType);
+	se.selectByVisibleText("Event");
+	Thread.sleep(2000);
+	eventCategoryList.click();
+	Thread.sleep(3000);
+	ADST06ECat1.click();
+	Thread.sleep(3000);
+	startDate.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(date2).build().perform();
+	Thread.sleep(2000);
+	endDate.click();
+	Thread.sleep(2000);
+	act.sendKeys(date2).build().perform();
+	Thread.sleep(2000);
+	
+	
+	eventStartTime.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(gTimeA7min).build().perform();
+	Thread.sleep(2000);
+	
+	
+	evenEventTime.click();
+	Thread.sleep(2000);
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(gTimeA22min).build().perform();
+	Thread.sleep(2000);
+	
+	setRemindarCheckBox.click();
+	Thread.sleep(2000);
+	
+	act.sendKeys(Keys.PAGE_DOWN).build().perform();
+	Thread.sleep(2000);
+	
+	Select se1= new Select(remindarType);
+	se1.selectByVisibleText("One time");
+	Thread.sleep(2000);
+	
+	Select se2= new Select(SelectReminderDays);
+	se2.selectByVisibleText("1");
+	Thread.sleep(2000);	
+	
+	
+	
+	
+	
+	enabldSendPush.click();
+	Thread.sleep(2000);
+	act.sendKeys(Keys.PAGE_DOWN).build().perform();
+	Thread.sleep(2000);
+	titleField.click();
+	Thread.sleep(2000);
+	act.sendKeys("BG-info event schedule-firefighter-reminder>1 day").build().perform();
+	Thread.sleep(2000);
+	loacationField.click();
+	Thread.sleep(2000);
+	act.sendKeys("Manewada graound, Nagpur").build().perform();
+	Thread.sleep(2000);
+	
+	act.sendKeys(Keys.TAB).build().perform();
+	Thread.sleep(2000);
+	act.sendKeys("BG-info event schedule created by firefighter with reminder > 1 day checking.").build().perform();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+	
+		
+		userTypeFireFighter.click();
+		Thread.sleep(2000);
+		
+		selectAllCheckBox.click();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		selectAllCheckBox.click();
+		Thread.sleep(2000);
+		jonas2.click();
+		Thread.sleep(2000);
+		BenMs.click();
+		Thread.sleep(3000);
+		
+		saveInfo.click();
+		Thread.sleep(2000);
+		
+		
+		
+		
+		
+	}
 	
 	
 	
@@ -89,6 +442,7 @@ import org.openqa.selenium.support.ui.Select;
 	act.sendKeys(Keys.ENTER).build().perform();
 	Thread.sleep(2000);
 	Select se= new Select(selectType);
+	Thread.sleep(2000);
 	se.selectByVisibleText("Event");
 	eventCategoryList.click();
 	Thread.sleep(3000);
@@ -96,14 +450,15 @@ import org.openqa.selenium.support.ui.Select;
 	Thread.sleep(3000);
 	startDate.click();
 	Thread.sleep(2000);
-	
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
 	
 			
 	endDate.click();
 	Thread.sleep(2000);
-	act.sendKeys("1").build().perform();
-	Thread.sleep(2000);
-	
+	act.sendKeys(date).build().perform();
 	Thread.sleep(2000);
 	eventFullDay.click();
 	Thread.sleep(2000);
@@ -127,7 +482,7 @@ import org.openqa.selenium.support.ui.Select;
 		act.sendKeys(Keys.PAGE_DOWN).build().perform();
 		Thread.sleep(2000);
 		
-		userTypeAttribute.click();
+		userTypeFireFighter.click();
 		Thread.sleep(2000);
 		
 		selectAllCheckBox.click();
@@ -136,8 +491,11 @@ import org.openqa.selenium.support.ui.Select;
 		Thread.sleep(2000);
 		selectAllCheckBox.click();
 		Thread.sleep(2000);
-		ADST06A2.click();
+		jonas2.click();
 		Thread.sleep(2000);
+		BenMs.click();
+		Thread.sleep(3000);
+		
 		saveInfo.click();
 		Thread.sleep(2000);
 		
@@ -168,21 +526,24 @@ import org.openqa.selenium.support.ui.Select;
 	Thread.sleep(2000);
 	Select se= new Select(selectType);
 	se.selectByVisibleText("Event");
+	Thread.sleep(2000);
 	eventCategoryList.click();
 	Thread.sleep(3000);
 	ADST06ECat1.click();
 	Thread.sleep(3000);
 	startDate.click();
 	Thread.sleep(2000);
-	
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
 	
 			
 	endDate.click();
 	Thread.sleep(2000);
-	act.sendKeys("1").build().perform();
+	act.sendKeys(date).build().perform();
 	Thread.sleep(2000);
 	
-	Thread.sleep(2000);
 	eventFullDay.click();
 	Thread.sleep(2000);
 	enabldSendPush.click();
@@ -247,20 +608,22 @@ import org.openqa.selenium.support.ui.Select;
 	Thread.sleep(2000);
 	Select se= new Select(selectType);
 	se.selectByVisibleText("Event");
+	Thread.sleep(2000);
 	eventCategoryList.click();
 	Thread.sleep(3000);
 	ADST06ECat1.click();
 	Thread.sleep(3000);
 	startDate.click();
 	Thread.sleep(2000);
-	
+	act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	Thread.sleep(1000);
+	act.sendKeys(date).build().perform();
+	Thread.sleep(2000);
 	
 			
 	endDate.click();
 	Thread.sleep(2000);
-	act.sendKeys("1").build().perform();
-	Thread.sleep(2000);
-	
+	act.sendKeys(date).build().perform();
 	Thread.sleep(2000);
 	eventFullDay.click();
 	Thread.sleep(2000);

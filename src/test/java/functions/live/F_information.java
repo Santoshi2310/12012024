@@ -43,12 +43,13 @@ public class F_information extends B_baseClass {
 		@FindBy(xpath="(//a[text()=\"Chat\"])[1]")private WebElement infoChatButton;
 		@FindBy(xpath="//input[@placeholder=\"Write your message...\"]")private WebElement writeMassageField;
 		@FindBy(xpath="//button[@id=\"actionSendMessage\"]")private WebElement sendMassageButton ;
-		// @FindBy(xpath="")private WebElement ;
-		// @FindBy(xpath="")private WebElement ;
-		// @FindBy(xpath="")private WebElement ;
-		// @FindBy(xpath="")private WebElement ;
-		// @FindBy(xpath="")private WebElement ;
-		// @FindBy(xpath="")private WebElement ;
+		
+		@FindBy(xpath="//input[@id=\"inlineRadio4\"]")private WebElement  userTypeMonitor;
+		@FindBy(xpath="//input[@id=\"user_id\" and @value=\"23008\" ]")private WebElement ADST06M1;
+		@FindBy(xpath="//input[@id=\"InfoStartDate\"]")private WebElement infoStartDateField;
+	    @FindBy(xpath="//input[@id=\"InfoEndDate\"]")private WebElement infoEndDateField;
+		@FindBy(xpath="//input[@id=\"InfoStartTime\"]")private WebElement infoStartTimeField;
+		@FindBy(xpath="//input[@id=\"InfoEndTime\"]")private WebElement infoEndTimeField;
 		// @FindBy(xpath="")private WebElement ;
 		// @FindBy(xpath="")private WebElement ;
 		// @FindBy(xpath="")private WebElement ;
@@ -236,6 +237,105 @@ public class F_information extends B_baseClass {
 			}
 			
 			
+			
+			
+			public void createInformationForMonitor ( WebDriver driver,String gTimeA5min, String gTimeA15min, String date ) throws Throwable
+			{
+				Actions act = new Actions (driver);
+				
+				createNewButton.click();
+				Thread.sleep(2000);
+				fireDepartmentField.click();
+				Thread.sleep(2000);
+				act.sendKeys("andrew").build().perform();
+				Thread.sleep(2000);
+				act.sendKeys(Keys.ENTER).build().perform();
+				Thread.sleep(2000);
+				fireStationField.click();
+				Thread.sleep(2000);
+				act.sendKeys("06").build().perform();
+				Thread.sleep(2000);
+				act.sendKeys(Keys.ENTER).build().perform();
+				Thread.sleep(2000);
+				Select se= new Select(selectType);
+				se.selectByVisibleText("Information");
+				
+				titleField.click();
+				Thread.sleep(2000);
+				act.sendKeys("BG-Monitor information.").build().perform();
+				Thread.sleep(2000);
+				loacationField.click();
+				Thread.sleep(2000);
+				act.sendKeys("Manewada graound, Nagpur").build().perform();
+				Thread.sleep(2000);
+				
+				act.sendKeys(Keys.TAB).build().perform();
+				Thread.sleep(2000);
+				act.sendKeys("BG-Monitor information from "+gTimeA5min+" to "+gTimeA15min).build().perform();
+				Thread.sleep(2000);
+				act.sendKeys(Keys.PAGE_DOWN).build().perform();
+				Thread.sleep(2000);
+				
+				userTypeMonitor.click();
+				Thread.sleep(2000);
+				
+				selectAllCheckBox.click();
+				Thread.sleep(2000);
+				act.sendKeys(Keys.PAGE_DOWN).build().perform();
+				Thread.sleep(2000);
+				selectAllCheckBox.click();
+				Thread.sleep(2000);
+				ADST06M1.click();
+				Thread.sleep(2000);
+				
+				infoStartDateField.click();
+				Thread.sleep(2000);
+				
+				act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+				Thread.sleep(1000);
+				act.sendKeys(date).build().perform();
+				Thread.sleep(2000);
+				
+				infoEndDateField.click();
+				Thread.sleep(2000);
+				
+				act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+				Thread.sleep(1000);
+				act.sendKeys(date).build().perform();
+				Thread.sleep(2000);
+	//			
+				
+				infoStartTimeField.click();
+				Thread.sleep(2000);
+				
+				act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+				Thread.sleep(1000);
+				act.sendKeys(gTimeA5min).build().perform();
+				Thread.sleep(2000);
+				
+				infoEndTimeField.click();
+				Thread.sleep(2000);
+				
+				act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+				Thread.sleep(1000);
+				act.sendKeys(gTimeA15min).build().perform();
+				Thread.sleep(2000);
+				
+				saveInfo.click();
+				Thread.sleep(2000);
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			public void sendMassageToInfoUsers ( WebDriver driver ) throws Throwable
 			{
 				Actions act = new Actions (driver);
@@ -260,6 +360,11 @@ public class F_information extends B_baseClass {
 				
 				
 			}
+			
+			
+			
+			
+			
 			
 			
 			

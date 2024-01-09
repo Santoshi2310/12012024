@@ -6,18 +6,26 @@
 			<class name="functions.live.AA_testClass_delete" />
 			<methods>
 				
-				
+				<include name="userDetails"  />
+			
 				
 						
-				<include name="deleteAlarm" />
+						
+				<include name="delteInfoEvent" />	
 				<include name="deleteTestAlarmFromList" />
 				<include name="deleteTestAlarmFromOverview" />
-				<include name="delteInfoEvent" />
+				<include name="deleteAlarm" />
+				<include name="deleteARFromList" />
+				<include name="deleteARFromHistory" />
+				
+				
 
 
 				<exclude name="deleteAvailabilityFromHistory" />
 
 
+
+				<include name="detailsAboutScript"  /> 
 			</methods>
 
 		</classes>
