@@ -169,7 +169,8 @@ public class AA_testClass_delete extends B_baseClass {
 
 		Reporter.log(" ",true);
 		Reporter.log("The process of deleting availability request from history is started.", true);
-	
+		
+	    ar.availabilityRequestCommonDashboard(driver);
 		ar.deleteAvailabilityRequestFromHistory(driver);
 		
 		Reporter.log("The process of deleting availability request from history is complted.", true);

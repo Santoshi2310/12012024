@@ -60,6 +60,8 @@ import org.openqa.selenium.support.ui.Select;
 	@FindBy(xpath="//select[@id=\"InformationReminderMin\"]")private WebElement SelectReminderMin;
 	@FindBy(xpath="//select[@id=\"InformationReminderHours\"]")private WebElement SelectReminderHours;
 	@FindBy(xpath="//select[@id=\"InformationReminderDay\"]")private WebElement SelectReminderDays;
+	
+	
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
@@ -686,6 +688,8 @@ import org.openqa.selenium.support.ui.Select;
 		
 		infoChatButton.click();
 		Thread.sleep(2000);
+		
+		
 		writeMassageField.click();
 		Thread.sleep(2000);
 		act.sendKeys("Massage-info event users").build().perform();

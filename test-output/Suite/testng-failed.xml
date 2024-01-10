@@ -6,8 +6,13 @@
       <class name="functions.live.AA_testClass_delete">
         <methods>
           <include name="deleteARFromHistory"/>
+          <include name="deleteTestAlarmFromOverview"/>
+          <include name="deleteAlarm"/>
+          <include name="deleteARFromList"/>
+          <include name="delteInfoEvent"/>
           <include name="lounchBrowser"/>
           <include name="backToHomePage2"/>
+          <include name="deleteTestAlarmFromList"/>
           <include name="backToHomePage"/>
           <include name="logOut"/>
         </methods>

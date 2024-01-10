@@ -13,6 +13,10 @@ public class A_testClass_create extends B_baseClass {
 	String date ;
 	String gCurrntTime;
 	String gTimeA7min;
+	String gTimeA9min;
+	String gTimeA11min;
+	
+	
 	String gTimeA22min;
 	 String gTimeA67min;
 	 String gTimeA82min;
@@ -20,7 +24,8 @@ public class A_testClass_create extends B_baseClass {
 	 String date2;
      String dateAft2Days;
      String today;
-
+     String dayAf2day;
+     String dayAf4day;
 	
 	String userName = "6039-IN-andrew-deptu-2";
 	String password = "123456";
@@ -64,10 +69,16 @@ public class A_testClass_create extends B_baseClass {
 		date=tmc.germanyTodaysDate;
 		gCurrntTime =tmc.germanycurrentTime;
 		gTimeA7min =tmc.germanyTimeAfter7Minutes;
+		gTimeA9min = tmc.germanyTimeAfter9Minutes;
+		gTimeA11min= tmc.germanyTimeAfter11Minutes;
 		gTimeA22min = tmc.germanyTimeAfter22Minutes;
 		date2=tmc.germanyTomorrowDate2;
 		dateAft2Days=tmc.germanyDateAfterTwoDyas;
+		
+		tmc.getDays(driver);
 		today=tmc.TodaysDay;
+		dayAf2day=tmc.dayTow;
+		dayAf4day=tmc.dayFour;
 		
 		
 		
@@ -376,14 +387,49 @@ public void createInfoEventByResourceSchedule() throws Throwable {
 	@Test
 	public void createAvailabilityRequestSendSchedule () throws Throwable {
 		Reporter.log(" ",true);
-		Reporter.log("The process of create availability request > send schedule is started.", true);
+		Reporter.log("The process of create availability request > schedule is started.", true);
 		ar.availabilityRequestCommon(driver);
-		ar.ARSendSchedule(driver, date, date2, gTimeA7min, dateAft2Days, gTimeA22min);
-		Reporter.log("The process of create availability request > send schedule is complete.", true);
+		ar.ARRecursivee(driver, today, gTimeA7min, gTimeA22min, dayAf2day, dayAf4day);
+		Reporter.log("The process of create availability request > schedule is complete.", true);
+		Reporter.log(" ",true);
+	}
+	
+	@Test
+	public void createAvailabilityRequestSendRecursive () throws Throwable {
+		Reporter.log(" ",true);
+		Reporter.log("The process of create availability request > recursive is started.", true);
+		ar.availabilityRequestCommon(driver);
+		ar.ARRecursivee(driver, today, gTimeA7min, gTimeA22min, dayAf2day, dayAf4day);
+		Reporter.log("The process of create availability request > recursive is complete.", true);
 		Reporter.log(" ",true);
 	}
 	
 	
+	
+	@Test
+	public void createAvailabilityRequestSendMultipleDays () throws Throwable 
+	{
+		Reporter.log(" ",true);
+		Reporter.log("The process of create availability request > multiple days is started.", true);
+		ar.availabilityRequestCommon(driver);
+		ar.ARSendMultiple(driver, date, gTimeA7min, gTimeA9min, gTimeA11min, dayAf2day, dayAf4day, gTimeA22min);
+		Reporter.log("The process of create availability request > multiple days is complete.", true);
+		Reporter.log(" ",true);
+	}
+	
+	
+	
+	
+	@Test
+	public void SendMassagetoARUsers () throws Throwable 
+	{
+		Reporter.log(" ",true);
+		Reporter.log("The process of create availability request > multiple days is started.", true);
+		ar.availabilityRequestCommonDashboard(driver);
+		ar.massageToARUser(driver);
+		Reporter.log("The process of create availability request > multiple days is complete.", true);
+		Reporter.log(" ",true);
+	}
 	
 	@Test
 	public void detailsAboutScript() throws Throwable 

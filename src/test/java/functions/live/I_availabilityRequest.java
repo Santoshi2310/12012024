@@ -49,12 +49,36 @@ public class I_availabilityRequest {
 	@FindBy(xpath="//input[@id=\"requested_datetime\"]")private WebElement ARSendTime;
 		
 	@FindBy(xpath="//select[@id=\"requested_day_id\"]")private WebElement ARday;
+	
 		@FindBy(xpath="//input[@id=\"timePicker1\"]")private WebElement ARSendTime1;
-	@FindBy(xpath="//select [@id=\"from_day_id\"]")private WebElement requestfromday;
+		
+		
+		
+	
+		@FindBy(xpath="//select[@name=\"data[PlanningResources][from_day]\"]")private WebElement ArRequestFrom;
+		@FindBy(xpath="//select[@name=\"data[PlanningResources][to_day]\"]")private WebElement ArRequestTo;
+		@FindBy(xpath="//input[@id=\"requested_datetime_multi1\"]")private WebElement ARMultiTime1;
+		@FindBy(xpath="//button[@class=\"add_field_button btn btn-primary float-right\"]")private WebElement addMoreTime;
+
+		@FindBy(xpath="//input[@id=\"requested_datetime_multi2\"]")private WebElement ARMultiTime2;
+		@FindBy(xpath="//input[@id=\"requested_datetime_multi3\"]")private WebElement ARMultiTime3;
+		
+		
+		@FindBy(xpath="//select[@id=\"multiple_from_day\"]")private WebElement ARMultiFromDay;
+		@FindBy(xpath="//input[@id=\"multiple_from_time\"]")private WebElement ARMultiFromTime ;
+		@FindBy(xpath="//select[@id=\"multiple_to_day\"]")private WebElement ARMultiToDay;
+		@FindBy(xpath="//input[@id=\"multiple_to_time\"]")private WebElement ARMultiToTime;
+		
+		
+		@FindBy(xpath="//input[@aria-controls=\"weekendHistoryTable\"]")private WebElement ARHistorySearchField;
+		@FindBy(xpath="//button[@id=\"dt_actionSearch\"]")private WebElement historySearchButton;
+		@FindBy(xpath="(//a[text()=\"Chat\"])[1]")private WebElement ARChatOption;
+		@FindBy(xpath="//input[@placeholder=\"Write your message...\"]")private WebElement writeMassageField;
+		@FindBy(xpath="//button[@id=\"actionSendMessage\"]")private WebElement sendMassageButton ;
+		
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
@@ -79,6 +103,21 @@ public class I_availabilityRequest {
 		Thread.sleep(2000);
 		
 	}
+	
+	
+	public void availabilityRequestCommonDashboard ( WebDriver driver ) throws Throwable
+	{
+	
+	Actions act= new Actions (driver);
+	act.sendKeys(Keys.PAGE_DOWN).perform();
+	Thread.sleep(2000);
+	availabilityRequestModule.click();
+	Thread.sleep(2000);
+	availabilityRequestHistory.click();
+	Thread.sleep(2000);
+	
+	}
+	
 		
 		
 		
@@ -146,6 +185,9 @@ public class I_availabilityRequest {
 		ARSlipInDays.click();
 		Thread.sleep(2000);
 		
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(1000);
+		
 		ARSHift.click();
 		Thread.sleep(2000);
 		
@@ -188,6 +230,9 @@ public class I_availabilityRequest {
 		Thread.sleep(2000);
 		act.sendKeys("BG-AR >  one time > schedule").build().perform();
 		Thread.sleep(2000);
+		
+		
+		
 		Select se = new Select(ARType);
 		se.selectByVisibleText("One time");
 		Thread.sleep(2000);
@@ -196,6 +241,8 @@ public class I_availabilityRequest {
 		ARSendTime.click();
 		Thread.sleep(2000);
 		
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
 		act.sendKeys(date+" "+gTimeA7min).build().perform();
 		Thread.sleep(2000);
 		
@@ -249,6 +296,9 @@ public class I_availabilityRequest {
 		ARSHift.click();
 		Thread.sleep(2000);
 		
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(1000);
+		
 		addShift.click();
 		Thread.sleep(2000);
 		act.sendKeys("1st").build().perform();
@@ -272,7 +322,14 @@ public class I_availabilityRequest {
 		
 	}
 	
-	public void ARSend ( WebDriver driver,String today, String date,String date2, String gTimeA7min, String dateAft2Days,String gTimeA22min) throws Throwable
+
+	
+	
+	
+	
+	
+
+	public void ARRecursivee (WebDriver driver, String today, String gTimeA7min, String gTimeA22min, String dayAf2day, String dayAf4day) throws Throwable 
 	{
 		Actions act = new Actions(driver);
 		
@@ -280,14 +337,20 @@ public class I_availabilityRequest {
 		Thread.sleep(2000);
 		ARTitle.click();
 		Thread.sleep(2000);
-		act.sendKeys("BG-AR > recursive  ").build().perform();
+		act.sendKeys("BG-AR > recursive ").build().perform();
 		Thread.sleep(2000);
+		
+
 		Select se = new Select(ARType);
 		se.selectByVisibleText("Recursive");
 		Thread.sleep(2000);
 		
+		
+		
+		
+		
 		Select se1 = new Select(ARday);
-		se1.selectByVisibleText("today");
+		se1.selectByVisibleText(today);
 		Thread.sleep(2000);
 		
 		
@@ -295,8 +358,10 @@ public class I_availabilityRequest {
 		
 		ARSendTime1.click();
 		Thread.sleep(2000);
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
 		
-		act.sendKeys(date+" "+gTimeA7min).build().perform();
+		act.sendKeys(gTimeA7min).build().perform();
 		Thread.sleep(2000);
 		
 		
@@ -316,15 +381,149 @@ public class I_availabilityRequest {
 		
 		
 		
+		Select se2 = new Select(ArRequestFrom);
+		se2.selectByVisibleText(dayAf2day);
+		Thread.sleep(2000);
+		
+		Select se3 = new Select(ArRequestTo);
+		se3.selectByVisibleText(dayAf4day);
+		Thread.sleep(2000);
 		
 		
-		
-		
-		
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
 		
 		
 		ARSlipInDays.click();
 		Thread.sleep(2000);
+		
+		ARSHift.click();
+		Thread.sleep(2000);
+		
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(1000);
+		
+		addShift.click();
+		Thread.sleep(2000);
+		
+		act.sendKeys("1st").build().perform();
+		Thread.sleep(2000);
+		
+		adShiftButton.click();
+		Thread.sleep(2000);
+		
+	
+		act.sendKeys("2nd").build().perform();
+		Thread.sleep(2000);
+		
+		adShiftButton.click();
+		Thread.sleep(2000);
+		
+		ARSaveButton.click();
+		Thread.sleep(4000);
+		
+	}
+	
+	
+
+	public void ARSendMultiple ( WebDriver driver,String date,String gTimeA7min, String gTimeA9min,String gTimeA11min, String dayAf2day,String dayAf4day,String gTimeA22min) throws Throwable
+	{
+		Actions act = new Actions(driver);
+		
+		createNewButton.click();
+		Thread.sleep(2000);
+		ARTitle.click();
+		Thread.sleep(2000);
+		act.sendKeys("BG-AR >  one time > multiple days.").build().perform();
+		Thread.sleep(2000);
+		
+		
+		
+		Select se = new Select(ARType);
+		se.selectByVisibleText("Multiple days");
+		Thread.sleep(2000);
+		
+		
+		ARMultiTime1.click();
+		Thread.sleep(2000);
+		
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
+		act.sendKeys(date+" "+gTimeA7min).build().perform();
+		Thread.sleep(2000);
+		
+		
+		addMoreTime.click();
+		Thread.sleep(2000);
+		
+		ARMultiTime2.click();
+		Thread.sleep(2000);
+		
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
+		act.sendKeys(date+" "+gTimeA9min).build().perform();
+		Thread.sleep(2000);
+		
+		
+		addMoreTime.click();
+		Thread.sleep(2000);
+		
+		ARMultiTime3.click();
+		Thread.sleep(2000);
+		
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
+		
+		act.sendKeys(date+" "+gTimeA11min).build().perform();
+		Thread.sleep(2000);
+		
+					
+		
+		departmentField.click();
+		Thread.sleep(2000);
+		act.sendKeys("andrew").build().perform();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.ENTER).build().perform();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		
+		station06.click();
+		Thread.sleep(2000);
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(2000);
+		
+		
+		Select se1 = new Select(ARMultiFromDay);
+		se1.selectByVisibleText(dayAf2day);
+		Thread.sleep(2000);
+		
+	
+		
+		ARMultiFromTime.click();
+		Thread.sleep(2000);
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
+		act.sendKeys(gTimeA7min).build().perform();
+		Thread.sleep(2000);
+			
+		Select se2 = new Select(ARMultiToDay);
+		se2.selectByVisibleText(dayAf4day);
+		Thread.sleep(2000);
+		
+		ARMultiToTime.click();
+		Thread.sleep(2000);
+		act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(1000);
+		act.sendKeys(gTimeA22min).build().perform();
+		Thread.sleep(2000);
+		
+		
+		ARSlipInDays.click();
+		Thread.sleep(2000);
+		
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(1000);
 		
 		ARSHift.click();
 		Thread.sleep(2000);
@@ -356,18 +555,35 @@ public class I_availabilityRequest {
 	
 	
 	
+	public void massageToARUser( WebDriver driver) throws Throwable 
+	{
+		
+		Actions act = new Actions(driver);
+		
+		ARHistorySearchField.click();
+		Thread.sleep(2000);
+		
+		act.sendKeys("BG-AR").build().perform();
+		Thread.sleep(2000);
+		
+		historySearchButton.click();
+		Thread.sleep(2000);
+		
+		ARChatOption.click();
+		Thread.sleep(2000);
+		
+		
+		writeMassageField.click();
+		Thread.sleep(2000);
+		act.sendKeys("Massage-availability request users").build().perform();
+		Thread.sleep(2000);
+		sendMassageButton.click();
+		Thread.sleep(2000);
+		
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
 	
 	
 	
@@ -412,14 +628,7 @@ public void deleteAvailabilityRequestFromList( WebDriver driver) throws Throwabl
 		public void deleteAvailabilityRequestFromHistory( WebDriver driver) throws Throwable {
 			
 			
-			Actions act= new Actions (driver);
-			act.sendKeys(Keys.PAGE_DOWN).perform();
-			Thread.sleep(2000);
-			availabilityRequestModule.click();
-			Thread.sleep(2000);
-			availabilityRequestHistory.click();
-			Thread.sleep(2000);
-			
+			Actions act = new Actions(driver);
 			
 			for	(int i=1;i<=20;i++)
 			{
@@ -451,6 +660,8 @@ public void deleteAvailabilityRequestFromList( WebDriver driver) throws Throwabl
 	
 	
 		}
+
+
 	
 
 }

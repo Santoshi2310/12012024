@@ -12,23 +12,42 @@ public class AAAA_pt
 
 	
 	public static void main(String[] args) {
-		
-		// Get today's date
-        LocalDate today = LocalDate.now();
+		LocalDate today = LocalDate.now();
 
-        // Get today's day of the week
-        DayOfWeek todaysDay = today.getDayOfWeek();
+        // Calculate the date after two days
+        LocalDate dateAfterTwoDays = today.plusDays(2);
+        LocalDate dateAfterFourDays = today.plusDays(4);
 
-        // Format today's day using DateTimeFormatter
-        String formattedTodaysDay = todaysDay.getDisplayName(
+        // Get the day of the week for the date after two days
+        DayOfWeek dayOfWeekAfterTwoDays = dateAfterTwoDays.getDayOfWeek();
+        DayOfWeek dayOfWeekAfterForeDays = dateAfterFourDays.getDayOfWeek();
+        
+
+        // Format the date and day of the week using DateTimeFormatter
+        
+        String dayOfWeekStringTow = dayOfWeekAfterTwoDays.getDisplayName(
                 java.time.format.TextStyle.FULL, 
-                Locale.getDefault()
+                java.util.Locale.getDefault()
         );
+        String dayOfWeekStringFour = dayOfWeekAfterForeDays.getDisplayName(
+                java.time.format.TextStyle.FULL, 
+                java.util.Locale.getDefault()
+        );
+        
 
-        // Display today's day
-        System.out.println("Today's day: " + formattedTodaysDay);
-	    }
-    	
+        // Display the result
+     
+        System.out.println("Day of the week after two days: " + dayOfWeekStringTow);
+        
+        System.out.println("Day of the week after two days: " + dayOfWeekStringFour);          
+	               
+	        
+	    
+        
+        
+        
+        }
+	
 	
 	
 	

@@ -59,14 +59,6 @@ public class E_manualAlarm extends B_baseClass
 	@FindBy(xpath="//button[@id=\"addSubmit\"]")private WebElement save;
 	
 
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
-	//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
 		//@FindBy(xpath="")private WebElement ;
