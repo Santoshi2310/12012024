@@ -8,12 +8,41 @@
       <methods>
 		  
 		  
-	
-		 <include name="userDetails"  />
+	 <include name="userDetails"  />
+		  
+			<include name="createForMonitor"  />
+		
+		 
+		<include name="createInfoEventByAttributeSchedule"  /> 
+		<include name="createInfoEventByResourceSchedule"  /> 
+		<include name="createInfoEventByFighterSchedule"  /> 
+		  
+		<include name="createTestAlarmByAttributeRecursiveMontlyDateWise"  /> 
+		 
+		<include name="createAvailabilityRequestSendImmediat"  />
+		<include name="createAvailabilityRequestSendSchedule"  />
+		<include name="createAvailabilityRequestSendRecursive"  />
+		<include name="createAvailabilityRequestSendMultipleDays"  />
+		<include name="SendMassagetoARUsers"  />
+		
+		 
 		  
 		
-	
-
+		 
+		
+		
+		
+		<include name="createInformationByAttribute"  />
+		<include name="createInformationByResource"  />
+		<include name="createInformationByFirefighter"  />
+		<include name="sendMassageToinfoUsers"/>"
+		
+		<include name="createInfoEventByAttribute"/>
+		<include name="createInfoEventByResource"/>
+		<include name="createInfoEventByFirefighter"/>
+		<include name="sendMassageToinfoEventUsers"/>
+		
+		
 		
 		
 		
